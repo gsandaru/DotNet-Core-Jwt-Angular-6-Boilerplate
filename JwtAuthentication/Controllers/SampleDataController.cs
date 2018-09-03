@@ -13,8 +13,8 @@ namespace JwtAuthentication.Controllers
     {
         [HttpGet]
         [Route("getdata")]
-        public string getdata() {
-            return "Gihan Sandaru";
+        public IActionResult getdata() {
+            return Ok(new { name = "Gihan" });
         }
     }
 }

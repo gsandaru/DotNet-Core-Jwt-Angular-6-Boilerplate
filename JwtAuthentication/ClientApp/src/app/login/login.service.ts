@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { LoginDto } from '../dtos/logindto';
+import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class LoginService {
@@ -9,7 +10,8 @@ export class LoginService {
   constructor(private http: Http) { }
 
   getAuthToken(logindto: LoginDto) {
-    return this.http.post("/api/auth/login", logindto).map(data => data.json());
+    return this.http.post("/api/auth/login", logindto)
+      .map(data => data.json());
   }
 
 
