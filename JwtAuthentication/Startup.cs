@@ -32,7 +32,8 @@ namespace JwtAuthentication
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddDbContext<Auth.ApplicationDBContext>(options => options.UseSqlServer(@"Password=<YourStrong!Passw0rd>;Persist Security Info=True;User ID=sa;Initial Catalog=APPDB;Data Source=localhost,1433\sqlexpress"));
+            //services.AddDbContext<Auth.ApplicationDBContext>(options => options.UseSqlServer(@"Password=<YourStrong!Passw0rd>;Persist Security Info=True;User ID=sa;Initial Catalog=APPDB;Data Source=localhost,1433\sqlexpress"));
+            services.AddDbContext<Auth.ApplicationDBContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<Auth.ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<Auth.ApplicationDBContext>()
                     .AddDefaultTokenProviders();
